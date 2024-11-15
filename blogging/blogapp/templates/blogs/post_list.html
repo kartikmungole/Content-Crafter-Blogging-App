@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+    <title>Blog Posts</title>
+</head>
+<body>
+    <h1>All Posts</h1>
+    <a href="{% url 'post-create' %}">Create New Post</a>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+            </li>
+        {% empty %}
+            <li>No posts available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
